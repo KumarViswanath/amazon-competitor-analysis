@@ -672,4 +672,4 @@ For questions or issues:
 
 ---
 
-**Made with ❤️ for e-commerce competitive intelligence**
+**Made by Kumar Viswanath**
