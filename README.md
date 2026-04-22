@@ -318,7 +318,7 @@ insights = groq_client.chat.completions.create(
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/fnusatvik07/amazon-webscrap.git
+git clone https://github.com/KumarViswanath/amazon-competitor-analysis.git
 cd amazon-webscrap
 ```
 
@@ -666,8 +666,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 For questions or issues:
-- Open an [Issue](https://github.com/fnusatvik07/amazon-webscrap/issues)
-- Email: your-email@domain.com
+- Open an [Issue](https://github.com/KumarViswanath/amazon-competitor-analysis/issues)
+- Email: rameswaramkumarviswanath@gmail.com
 - Documentation: [API Docs](http://localhost:8000/docs)
 
 ---
