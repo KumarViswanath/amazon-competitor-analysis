@@ -587,54 +587,6 @@ npm run build
 npm test
 ```
 
-### Docker Deployment (Optional)
-```bash
-# Build and run with Docker Compose
-docker-compose up --build
-
-# Run in background
-docker-compose up -d
-```
-
-## 🔍 Troubleshooting
-
-### Common Issues
-
-#### 1. Oxylabs API Errors
-```
-Error: Failed to scrape data: 401 Unauthorized
-```
-**Solution**: Verify `OXYLABS_USERNAME` and `OXYLABS_PASSWORD` in `.env`
-
-#### 2. Groq API Rate Limits
-```
-Error: Rate limit exceeded
-```
-**Solution**: Check Groq API usage limits or upgrade plan
-
-#### 3. Frontend Connection Issues
-```
-Error: Network Error - Cannot connect to backend
-```
-**Solution**: Ensure backend is running on port 8000
-
-#### 4. Missing Dependencies
-```
-Command 'uv' not found
-```
-**Solution**: Install UV package manager
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-# Or visit: https://docs.astral.sh/uv/getting-started/installation/
-```
-
-### Debug Mode
-Set `DEBUG=true` in `.env` for detailed logging:
-```env
-DEBUG=true
-LOG_LEVEL=DEBUG
-```
-
 ## 📊 Performance Metrics
 
 - **Scraping Speed**: ~2-5 seconds per product
@@ -651,25 +603,4 @@ LOG_LEVEL=DEBUG
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Oxylabs** - Web scraping infrastructure
-- **Groq** - AI analysis capabilities  
-- **FastAPI** - High-performance web framework
-- **React** - Frontend framework
-- **Recharts** - Data visualization library
-
-## 📞 Support
-
-For questions or issues:
-- Open an [Issue](https://github.com/KumarViswanath/amazon-competitor-analysis/issues)
-- Email: rameswaramkumarviswanath@gmail.com
-- Documentation: [API Docs](http://localhost:8000/docs)
-
----
-
-**Made by Kumar Viswanath**
+**Made by Kumar Viswanath Rameswaram**
