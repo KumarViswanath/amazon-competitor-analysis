@@ -525,7 +525,7 @@ Provide prioritized, detailed recommendations:
                 
                 # New comprehensive sections with proper fallbacks
                 overall_insights=sections.get('OVERALL STRATEGIC INSIGHTS', f"Strategic analysis reveals competitive positioning opportunities with {len(competitors)} market competitors. Key insights include pricing optimization, feature differentiation, and market expansion potential."),
-                category_breakdown=category_breakdown if 'category_breakdown' in locals() else f"Category analysis shows competitive landscape across {len(set([c.get('category', 'General') for c in competitors]))} product segments with differentiation opportunities.",
+                category_breakdown=category_breakdown if 'category_breakdown' in locals() and isinstance(category_breakdown, dict) else {"Overview": "Competitive landscape with differentiation opportunities."},
                 review_analysis=sections.get('CUSTOMER REVIEW & FEEDBACK ANALYSIS', sections.get('REVIEW ANALYSIS', f"Customer review analysis across {len(competitors)} competitors reveals satisfaction patterns, feature preferences, and improvement opportunities for strategic advantage.")),
                 customer_feedback_summary=sections.get('CUSTOMER REVIEW & FEEDBACK ANALYSIS', f"Customer feedback analysis shows competitive review patterns with average {sum([c.get('rating', 0) for c in competitors if c.get('rating')])/len([c for c in competitors if c.get('rating')]):.1f} rating across competitors."),
                 brand_analysis=sections.get('COMPETITIVE ADVANTAGE ASSESSMENT', f"Brand positioning analysis reveals competitive strengths in market presence, customer loyalty, and differentiation opportunities compared to {len(competitors)} competitors."),
@@ -930,12 +930,41 @@ Provide prioritized, detailed recommendations:
             competitive_threats="Competitive analysis reveals market dynamics and strategic positioning opportunities. Threat assessment includes pricing pressures and feature competition.",
             action_plan="90-day strategic action plan includes immediate pricing optimization, feature enhancement evaluation, and competitive positioning strategies for market advantage.",
             market_trends="Market trend analysis shows evolving competitive dynamics with opportunities for strategic positioning and customer acquisition.",
-            category_breakdown="Category analysis reveals market segmentation opportunities and competitive positioning across different product segments.",
+            category_breakdown={
+                "Market Position": price_position.capitalize(),
+                "Customer Satisfaction": rating_position.capitalize(),
+                "Competitor Count": str(len(competitors)),
+                "Average Competitor Price": f"${avg_price:.2f}",
+                "Average Competitor Rating": f"{avg_rating:.1f} stars"
+            },
             review_analysis="Review analysis provides customer sentiment insights and competitive advantage opportunities based on customer feedback patterns.",
-            swot_analysis="SWOT analysis reveals strategic strengths, weaknesses, opportunities, and threats for competitive market positioning.",
-            competitive_matrix="Competitive matrix analysis provides comprehensive comparison across key performance indicators and market positioning factors.",
-            opportunities=["Market expansion opportunities", "Feature differentiation potential", "Pricing optimization strategies"],
-            feature_gaps=["Identified feature enhancement areas", "Competitive feature analysis", "Innovation opportunities"],
+            customer_feedback_summary=f"Customer feedback shows average competitor rating of {avg_rating:.1f} stars across {len(competitors)} competitors.",
+            brand_analysis="Brand positioning analysis reveals competitive strengths and differentiation opportunities in the market.",
+            seasonal_trends="Seasonal analysis shows market fluctuation patterns and strategic timing opportunities.",
+            geographic_insights="Geographic market analysis reveals regional competitive dynamics and expansion opportunities.",
+            optimization_suggestions=[
+                "Optimize product pricing based on competitive analysis",
+                "Enhance product listing with competitor insights",
+                "Improve customer service based on review analysis",
+                "Develop unique value propositions",
+                "Monitor competitor changes regularly"
+            ],
+            risk_assessment="Risk assessment identifies competitive pressures, market challenges, and strategic threats requiring mitigation strategies.",
+            opportunity_analysis="Opportunity analysis reveals market gaps, competitive advantages, and growth potential for strategic positioning.",
+            price_breakdown={
+                "main_product": main_price,
+                "average_competitor": avg_price,
+                "position": price_position
+            },
+            feature_breakdown={
+                "competitive_advantages": "Unique product features and value propositions",
+                "improvement_areas": "Feature enhancement opportunities identified",
+                "market_gaps": "Unmet customer needs and market opportunities"
+            },
+            competitor_breakdown=[
+                {"name": comp.get("title", "Unknown")[:50], "price": comp.get("price", 0), "rating": comp.get("rating", 0)}
+                for comp in competitors[:5]
+            ],
             market_position_score=self._calculate_market_position(main_product, competitors),
             price_competitiveness_score=self._calculate_price_competitiveness(main_product, competitors)
         )
