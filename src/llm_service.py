@@ -936,8 +936,8 @@ Provide prioritized, detailed recommendations:
             competitive_matrix="Competitive matrix analysis provides comprehensive comparison across key performance indicators and market positioning factors.",
             opportunities=["Market expansion opportunities", "Feature differentiation potential", "Pricing optimization strategies"],
             feature_gaps=["Identified feature enhancement areas", "Competitive feature analysis", "Innovation opportunities"],
-            market_position_score=market_score,
-            price_competitiveness_score=price_score
+            market_position_score=self._calculate_market_position(main_product, competitors),
+            price_competitiveness_score=self._calculate_price_competitiveness(main_product, competitors)
         )
 
     def analyze_single_product(self, product: Dict[str, Any]) -> Dict[str, Any]:
